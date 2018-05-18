@@ -49,10 +49,8 @@ const TabNav = TabNavigator({
       style : { backgroundColor: "#7acc8f"},
       showIcon : true,
       showLabel : false
-    }
-  },
-  {
-    initialRouteName: 'Auth',
+    },
+    initialRouteName: 'Profile'
   }
 )
 
@@ -60,7 +58,7 @@ export default class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      isAuth : true
+      isAuth : false
     }
   }
 

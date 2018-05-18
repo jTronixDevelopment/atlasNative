@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { View, Text} from 'react-native'
+import { View } from 'react-native';
+import { Card, ListItem, Button, FormInput, FormLabel, FormValidationMessage, Text } from 'react-native-elements';
 
 //=== Style ====================================================================
 
@@ -14,9 +15,11 @@ export default class name extends Component{
 
   render(){
     return(
-        <Text>
-          name
-        </Text>
+        <View>
+          <View card>
+
+          </View>
+        </View>
     )
   }
 }

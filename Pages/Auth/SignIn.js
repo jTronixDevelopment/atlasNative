@@ -23,11 +23,16 @@ export default class SignUp extends Component{
 
   signIn(){
     this.auth.signIn({
-      successHandler: ()=>{ this.setAuth(true) },
+      successHandler: this.successfullySignedIn.bind(this),
       errorHandler: (err)=>{console.log(err)},
       email: this.state.email,
       password: this.state.password
     })
+  }
+
+  successfullySignedIn(){
+    // this.props.navigation.navigate('Profile') 
+    this.setAuth(true)
   }
 
   changeView(){

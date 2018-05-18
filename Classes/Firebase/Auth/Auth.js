@@ -17,7 +17,6 @@ export default class Auth{
   }
 
   signIn({email, password, errorHandler, successHandler}) {
-    console.log({email, password, errorHandler, successHandler})
     this.firebase.auth().signInWithEmailAndPassword(email, password)
     .then(()=>{
       successHandler();
@@ -28,7 +27,7 @@ export default class Auth{
     })
   }
 
-  signOut({ sucessHandler , erroHandler }) {
+  signOut({sucessHandler , erroHandler}) {
     this.firebase.auth().signOut()
     .then(()=>{
     })
@@ -36,8 +35,8 @@ export default class Auth{
     });
   }
 
-  forgotPassword({ email, firebase }){
-    firebase.auth().sendPasswordResetEmail(
+  forgotPassword({ email }){
+    this.firebase.auth().sendPasswordResetEmail(
     email, this.actionCodeSettings)
     .then(function() {
       // Password reset email sent.
@@ -47,10 +46,10 @@ export default class Auth{
     });
   }
 
-  signInWithFacebook({ firebase , successHandler, errorHandler }){
-    var provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithRedirect(provider).then(function() {
-      firebase.auth().getRedirectResult().then(function(result) {
+  signInWithFacebook({ successHandler, errorHandler }){
+    var provider = new this.firebase.auth.FacebookAuthProvider();
+    this.firebase.auth().signInWithRedirect(provider).then(function() {
+      this.firebase.auth().getRedirectResult().then(function(result) {
       }).catch(function(error) {
         errorHandler(error)
       });

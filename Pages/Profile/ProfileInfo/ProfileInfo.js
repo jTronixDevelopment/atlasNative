@@ -18,15 +18,16 @@ export default class ProfileInfo extends Component{
       dateOfBirth : "01/01/01",
       hometown: 'Anytown,USA'
     }
+    console.log('Profile infor , ',props)
   }
 
   componentDidMount(){
     this.setState({
-      profilePicture : this.props.profilePicture?this.props.profilePicture:PersonIcon,
-      firstName: this.props.firstName?this.props.firstName:"Loading...",
-      lastName: this.props.lastName?this.props.lastName:"Loading...",
-      dateOfBirth : this.props.dateOfBirth?this.props.dateOfBirth:"Loading...",
-      hometown: this.props.hometown?this.props.hometown:"Loading..."
+      profilePicture : this.props.userInfo.profilePicture?this.props.userInfo.profilePicture:PersonIcon,
+      firstName: this.props.userInfo.firstName?this.userInfo.props.firstName:"Loading...",
+      lastName: this.props.userInfo.lastName?this.userInfo.props.lastName:"Loading...",
+      dateOfBirth : this.props.userInfo.dateOfBirth?this.userInfo.props.dateOfBirth:"Loading...",
+      hometown: this.props.userInfo.hometown?this.props.userInfo.hometown:"Loading..."
     })
   }
 
@@ -34,11 +35,11 @@ export default class ProfileInfo extends Component{
     return(
         <View>
           <Text>Profile Info</Text>
-          <Image source={this.state.profilePicture}/>
-          <Text>{ this.state.firstName }</Text>
-          <Text>{ this.state.lastName }</Text>
-          <Text>{ this.state.hometown }</Text>
-          <Text>{ this.state.dateOfBirth }</Text>
+          <Image source={{ uri: this.props.userInfo.profilePic }} style={{ width:100, height: 100 }} />
+          <Text>{ this.props.userInfo.firstName }</Text>
+          <Text>{ this.props.userInfo.lastName }</Text>
+          <Text>{ this.props.userInfo.hometown }</Text>
+          <Text>{ this.props.userInfo.bio }</Text>
         </View>
     )
   }

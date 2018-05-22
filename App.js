@@ -50,7 +50,7 @@ const TabNav = TabNavigator({
       showIcon : true,
       showLabel : false
     },
-    initialRouteName: 'Profile'
+    initialRouteName: 'PostItem'
   }
 )
 
@@ -58,7 +58,7 @@ export default class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      isAuth : false
+      isAuth : true
     }
   }
 
@@ -73,7 +73,9 @@ export default class App extends React.Component {
       <SafeAreaView style={styles.fullHeight}>
         <Header/>
         {
-          (this.state.isAuth)?<TabNav screenProps={{ firebase: Firebase }}/>:<Auth screenProps = {{firebase: Firebase, saveState : this.saveState.bind(this) }}/>
+          (this.state.isAuth)?
+            <TabNav screenProps={{ firebase: Firebase }}/>:
+            <Auth screenProps = {{firebase: Firebase, saveState : this.saveState.bind(this) }}/>
         }
       </SafeAreaView>
     );

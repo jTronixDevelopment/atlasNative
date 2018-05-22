@@ -35,7 +35,7 @@ export default class Authorization extends React.Component {
         <Card>
           {
             this.state.isRegesteredUser?
-              <SignIn firebase={this.props.screenProps.firebase} setAuthFlowState={this.setAuthFlowState.bind(this)} setAuth={this.setAuth.bind(this)}/>:
+              <SignIn firebase={this.props.screenProps.firebase} setAuthFlowState={this.setAuthFlowState.bind(this)} setAuth={this.setAuth.bind(this)} navigation= {this.props.navigation}/>:
               <SignUp firebase={this.props.screenProps.firebase} setAuthFlowState={this.setAuthFlowState.bind(this)}/>
           }
         </Card>

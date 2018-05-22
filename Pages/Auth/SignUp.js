@@ -28,7 +28,7 @@ export default class SignUp extends Component{
   signUp(){
     this.auth.signUp({
       successHandler: ()=>{ this.props.setAuthFlowState(true) },
-      errorHandler: ()=>{},
+      errorHandler: (err)=>{console.log(err)},
       email: this.state.email,
       password: this.state.password
     })

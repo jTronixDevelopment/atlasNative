@@ -49,10 +49,8 @@ const TabNav = TabNavigator({
       style : { backgroundColor: "#7acc8f"},
       showIcon : true,
       showLabel : false
-    }
-  },
-  {
-    initialRouteName: 'Auth',
+    },
+    initialRouteName: 'PostItem'
   }
 )
 
@@ -75,7 +73,9 @@ export default class App extends React.Component {
       <SafeAreaView style={styles.fullHeight}>
         <Header/>
         {
-          (this.state.isAuth)?<TabNav screenProps={{ firebase: Firebase }}/>:<Auth screenProps = {{firebase: Firebase, saveState : this.saveState.bind(this) }}/>
+          (this.state.isAuth)?
+            <TabNav screenProps={{ firebase: Firebase }}/>:
+            <Auth screenProps = {{firebase: Firebase, saveState : this.saveState.bind(this) }}/>
         }
       </SafeAreaView>
     );

@@ -22,12 +22,18 @@ export default class SignUp extends Component{
   //=== Methods ================================================================
 
   signIn(){
+    console.log("Signing in")
     this.auth.signIn({
-      successHandler: ()=>{ this.setAuth(true) },
+      successHandler: this.successfullySignedIn.bind(this),
       errorHandler: (err)=>{console.log(err)},
       email: this.state.email,
       password: this.state.password
     })
+  }
+
+  successfullySignedIn(){
+    // this.props.navigation.navigate('Profile')
+    this.setAuth(true)
   }
 
   changeView(){
@@ -44,7 +50,7 @@ export default class SignUp extends Component{
         <FormInput onChangeText={(email) => this.setState({email})} inputStyle={authStyle.signInInput}/>
         <FormLabel>Password</FormLabel>
         <FormInput onChangeText={(password) => this.setState({password})} inputStyle={authStyle.signInInput}/>
-        <Button onPress={ this.signIn.bind(this)} title='Sign In' buttonStyle ={{backgroundColor: '#7acc8f',borderRadius:10, marginTop: 20}}/>
+        <Button onPress={ this.signIn.bind(this) } title='Sign In' buttonStyle ={{ backgroundColor: '#7acc8f',borderRadius:10, marginTop: 20 }}/>
         <Text style={{color: 'blue', textAlign:'center', paddingTop: 20}} onPress={ this.changeView.bind(this) }>
           Not a member yet click here!
         </Text>
